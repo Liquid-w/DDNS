@@ -81,6 +81,9 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 64
+          fetch-tags: true
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
@@ -340,6 +343,7 @@ jobs:
         with:
           repository-url: https://test.pypi.org/legacy/
           print-hash: true
+          verbose: true
 
   preview-docker:
     if: github.event_name == 'push'
